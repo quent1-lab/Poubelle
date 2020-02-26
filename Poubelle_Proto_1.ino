@@ -1,6 +1,6 @@
 #include <Wire.h>
 #include <Servo.h>
-#include "simpleMinuteur.h"
+//#include "simpleMinuteur.h"
 #include "rgb_lcd.h"
 
 rgb_lcd lcd;
@@ -38,11 +38,11 @@ int ultraValeur = 0;
 int cm = 0;
 byte x = 0;
 
-simpleMinuteur minuteurA(2000);
+/*simpleMinuteur minuteurA(2000);
 simpleMinuteur minuteurB(2000);
 simpleMinuteur minuteurC(2000);
 simpleMinuteur minuteurD(2000);
-simpleMinuteur minuteurE(2000);
+simpleMinuteur minuteurE(2000);*/
 
 
 void setup()
@@ -82,42 +82,22 @@ void loop()
 
   if (digitalRead(b1) == HIGH) {
     x = 11;
-    minuteurB.demarrer();
     digitalWrite(rouge , HIGH);
-    if (minuteurB.estTermine())
-    {
-      digitalWrite(rouge, LOW);
-    }
   }
 
   if (digitalRead(b2) == HIGH) {
     x = 12;
-    minuteurC.demarrer();
     digitalWrite(jaune , HIGH);
-    if (minuteurC.estTermine())
-    {
-      digitalWrite(jaune, LOW);
-    }
   }
 
   if (digitalRead(b3) == HIGH) {
     x = 13;
-    minuteurD.demarrer();
     digitalWrite(vert , HIGH);
-    if (minuteurD.estTermine())
-    {
-      digitalWrite(vert, LOW);
-    }
   }
 
   if (digitalRead(b4) == HIGH) {
     x = 14;
-    minuteurE.demarrer();
     digitalWrite(bleu , HIGH);
-    if (minuteurE.estTermine())
-    {
-      digitalWrite(bleu, LOW);
-    }
   }
 
   readRegisterAndSendValue(x , I2C_SLAVE_LCD_ADDRESS);
@@ -155,6 +135,4 @@ void Read() {
 }
 
 void Scan() {
-
-
 }
